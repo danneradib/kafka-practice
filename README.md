@@ -108,7 +108,7 @@ To perform this exercise we need to have the following elements installed locall
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [Java.ico]: https://img.shields.io/badge/Java-DD0031?style=for-the-badge&logo=java&logoColor=white
 [Java-url]: https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html
-[Docker.ico]: https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png
+[Docker.ico]: https://img.shields.io/badge/Docker-F0FFFF?style=for-the-badge&logo=docker&logoColor=blue
 [Docker-url]: https://www.docker.com/products/docker-desktop/
 [GitBash.ico]: https://git-scm.com/favicon.ico
 [GitBash-url]: https://git-scm.com/downloads
