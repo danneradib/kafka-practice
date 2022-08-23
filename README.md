@@ -109,7 +109,7 @@ To perform this exercise we need to have the following elements installed locall
 ### Twitter Simulator
 
 The purpose of this exercise is to have two microservices:
-- The first one is going to expose a post type end-point that is going to receive messages (JSON).
+- The first one is going to expose a post type end-point that is going to receive messages (JSON). And post messages in kafka topic (publisher).
 - The second will consume those messages and store them in the PostgreSQL database.
 
 ### Requirements
