@@ -7,9 +7,6 @@ This repository contains initial configuration for an practice excercice using K
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Prerequisites</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -18,12 +15,15 @@ This repository contains initial configuration for an practice excercice using K
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#kafka">Kafka</a></li>
+    <li><a href="#postgre-sql">PostgreSQL</a></li>
+    <li>
+	  <a href="#practice">Practice</a>
+	  <ul>
+		<li><a href="#twitter-simulator">Twitter Simulator</a></li>
+		<li><a href="#requirements">Requirements</a></li>
+      </ul>
+	</li>
   </ol>
 </details>
 
@@ -56,53 +56,70 @@ To perform this exercise we need to have the following elements installed locall
 ### Installation
 
 #### Kafka
-1. Abra un git bash JUSTO EN EL DIRECTORIO donde se encuentra el archivo "docker-compose-kafka.yml"
-    (No recomendado:Puede hacerlo con cmd pero debe estar como administrador)
-2. Abra la aplicaciòn de docker "Docker desktop" o almenos asegurese de inicarla por CMD o que el servicio este corriendo
-3. Ejecute el siguiente comando:
+1. Open a git bash RIGHT IN THE DIRECTORY where the file "docker-compose-kafka.yml" is located.
+    (Not recommended:You can do it with cmd but you must be as administrator)
+2. Open the docker application "Docker desktop" or at least make sure to start it via CMD or that the service is running.
+3. Execute the following command:
 	```sh
 	docker-compose -f nombre_archivo_compose.yml up
 	```
-    Osea para nuestro caso asi: docker-compose -f docker-compose-kafka.yml up
-4. Espere un par de minutos para que se bajen todas las dependencias y si los logs no muestran un error, entonces 
-    puede verificar con el cliente web que kafka este ejecutandose: http://localhost:9021/
-    (Cliente web: tamben ejecutado por que se especifica su uso en el arhcivo "yml")
+    So for our case: docker-compose -f docker-compose-kafka.yml up
+4. Wait a couple of minutes for all the dependencies to download and if the logs do not show an error, then you can check with the web 
+   client that kafka is running. you can verify with the web client that kafka is running: http://localhost:9021/
+    (Web client: also executed because its use is specified in the file "yml")
 	
 #### PostgreSQL
-1. Abra un git bash JUSTO EN EL DIRECTORIO donde se encuentra el archivo "docker-compose-postgresql.yml" 
-    (No recomendado:Puede hacerlo con cmd pero debe estar como administrador)
-2. Abra la aplicaciòn de docker "Docker desktop" o almenos asegurese de inicarla por CMD o que el servicio este corriendo
-3. Ejecute el siguiente comando: 
+1. Open a git bash JUST IN THE DIRECTORY where the file is located "docker-compose-postgresql.yml" 
+    (Not recommended: You can do it with cmd but you must be as administrator)
+2. Open the docker application "Docker desktop" or at least make sure to start it via CMD or that the service is running.
+3. Execute the following command: 
 	```sh
 	docker-compose -f nombre_archivo_compose.yml up
 	```
-    Osea para nuestro caso asi: docker-compose -f docker-compose-postgresql.yml up
-4. Espere un par de minutos para que se bajen todas las dependencias y si los logs no muestran un error, entonces 
-    puede verificar con el cliente web que PostgreSQL este ejecutandose: http://localhost:80/
-    (Acorde al puerto definido en la vaiable "ports" del archivo yml. Cliente web: tamben ejecutado por que se especifica su uso en el arhcivo "yml")
-4.1. En la Ui donde se piden las credenciales de acceso, inserte el username o correo que indico como valor para la variable llamada 
-     "PGADMIN_DEFAULT_EMAIL" en el archivo yml (si no ha Editado el archivo, el valor debe ser "admin@admin.com")
-5. En la Ui donde se piden las credenciales de acceso, inserte el username o correo que indico como valor para la variable llamada 
-     PGADMIN_DEFAULT_PASSWORDen el archivo yml (si no ha Editado el archivo, el valor debe ser "admin")
-6. Al abrir la interfaz o pantalla principal de PgAdmin, cree una nueva conexiòn a la Bd con el super usuario de postgress, siguiendo los 
-    siguientes pasos:
+    So for our case: docker-compose -f docker-compose-postgresql.yml up
+4. Wait a couple of minutes for all the dependencies to download and if the logs do not show an error, then
+    you can verify with the web client that PostgreSQL is running: http://localhost:80/
+    (According to the port defined in the "ports" variable of the yml file. Web client: also executed because its use is specified in the "yml" file.)
+4.1. In the Ui where the access credentials are requested, insert the username or email that I indicate as the value for the variable called 
+     "PGADMIN_DEFAULT_EMAIL" in the yml file (if you have not edited the file, the value should be "admin@admin.com")
+5. In the Ui where the access credentials are requested, insert the username or email that I indicate as the value for the variable called 
+     PGADMIN_DEFAULT_PASSWORD in the yml file (if you have not edited the file, the value should be "admin")
+6. When you open the PgAdmin interface or main screen, create a new connection to the DB with the postgress super user, 
+     following these steps:
        
-		A - En el panel izquierdo, click derecho sobre la opciòn "Servers" y a continuaciòn escoja la opciòn "create" y
-                    luego la opciòn "server"
-		B - En la UI desplegada, llene la casilla "Name" colocandole el nombre que usted desee a su conexiòn.
-		C - En la UI despelgada, vaya a la pestaña "Connection".
-		D - En la casilla "Host", coloque el nombre "postgres" (Lo anterior por que no nos vamos  conectar a local 
-			host sino a un servicio expuesto por la imagen de docker de PostgreSQL que hemos creado. Como bien se especifico 
-			en el archivo yml en la secciòn "services", el nombre de ese servicio es "postgres").
-		E - En la casilla "Port" se debe indicar el PUERTO que se especifico en para el servicio "postgres" en el archivo yml 
-                    (si no ha editado el archivo, deberìa ser el valor "5432").
-		F - En la casilla "Username" se debe indicar el USUARIO que se especifico en la variable "POSTGRES_USER" del archivo yml 
-                    (si no ha editado el archivo, deberìa ser el valor "root").
-                F - En la casilla "Password" se debe indicar la contraseña que se especifico en la variable "POSTGRES_PASSWORD" del archivo yml 
-                    (si no ha editado el archivo, deberìa ser el valor "root").    
+		A - In the left panel, right click on the option "Servers" and then choose the option "create" and
+                    then the "server" option
+		B - In the displayed UI, fill in the "Name" box by placing the name of your choice for your connection.
+		C - In the UI, go to the "Connection" tab.
+		D - In the "Host" box, put the name "postgres" (This is because we are not connecting to a local host but to 
+					a service exposed by the PostgreSQL docker image we have created. As specified in the yml file in 
+					the "services" section, the name of that service is "postgres").
+		E - In the "Port" box you must specify the PORT that you specified in the "postgres" service in the yml file 
+					(if you have not edited the file, it should be the value "5432").
+		F - In the "Username" box you must indicate the USER that you specified in the "POSTGRES_USER" variable of the yml file 
+					(if you have not edited the file, it should be the value "root").
+        G - In the "Password" box you must enter the password you specified in the "POSTGRES_PASSWORD" variable of the yml file 
+					(if you have not edited the file, it should be the value "root").
     
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+## Practice
+
+### Twitter Simulator
+
+The purpose of this exercise is to have two microservices:
+- The first one is going to expose a post type end-point that is going to receive messages (JSON).
+- The second will consume those messages and store them in the PostgreSQL database.
+
+### Requirements
+- Entity-relationship diagram.
+- High level design.
+- Architecture decisions.
+- Detailed explanation of kafka for the publisher and the consumer.
+- Implementation of the exercise applying 90% test coverage.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
