@@ -36,7 +36,7 @@ This repository will allow us to locally configure two Kafka services (zookeeper
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Getting Started (1)
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
